@@ -1,0 +1,39 @@
+.background{
+        width: 200px;
+        height: 200px;
+
+        background-color: darkgray;
+        /* 배경색 추가 */
+
+        background-image: url(https://newsimg.sedaily.com/2019/01/23/1VE5F3W5WP_18.png);
+        /* 배경이미지 추가 */
+
+        background-size: contain;
+        /* 배경 이미지 크기 지정, 이미지가 다 보일 수 이ㅛ게 크기를 맞춰줌 */
+
+        background-size: cover;
+        /* 배경이미지의 크기 지정, 최대크기(비율을 맞춤) 이미지가 잘릴 수 있다 이미지와 비율을 맞춰줘야함*/
+
+         background-size: 100px 100px;
+         /* 이미지의 사이즈 지정 */
+
+         background-position: 10px 10px;
+
+         /* 배경 이미지의 위치 지정 x 축 y축 */
+
+         background-position: center;
+         /* 배경 이미지의 위치를 가운데 맞춤 */
+
+        background-repeat: no-repeat;
+        /* 이미지 반복 여부, 반복하지 않자 */
+
+        background-repeat: repeat;
+        /* 배경 이미지 반복 여부, 반복한다, 기본값 */
+
+        background-repeat: repeat-x;
+        /* 배경이미지를 x축으로만 반복 */
+
+        background-repeat: repeat-y;
+        /* 배경 이미지를 y축으로만 반복 */
+
+}

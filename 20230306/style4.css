@@ -1,0 +1,72 @@
+.tab-meun> input{
+    display: none;    
+}
+
+/* 인접한 형재요소 선택자 + */
+/* tab-meun 클래스를 가지고 이ㅛ는 태그 */
+.tab-meun> input + label{
+    display: inline-block;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid purple;
+    color:black;
+    text-align: center;
+    font-size: 14px;
+    margin-right: 0px;
+    /* 마우스를 올렸을 떄 보여줄 커서를 설정 할 수 있다 */
+    cursor: pointer;
+    width: 132px;
+}
+/* checked 속성이 있는 input 태그 */
+/* .tap-meun클래스를 가지고 있는 자식 input태그가
+checked 속성이 있르면 인접 현제 태그인 lable에 스타일을 적용 */
+.tab-meun>input:checked + label {
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    color: black;
+    border: 1px solid purple;
+}
+.box{
+    width: 500px;
+    height: 600px;
+
+    display: none;
+
+}
+/* input태그중 class가 tab01 이고 checked 속성이 이ㅛ고 형제요소
+및에 있는 태그 중에 itwm1클래스를 가지고 있는 태그 */
+input[class="tab01"]:checked~.item1{
+    display: block;
+    color: white;
+    border: 1px solid purple;}
+    
+input[class="tab02"]:checked~.item2{
+    display: block;
+    color: white;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid purple;
+}
+input[class="tab03"]:checked~.item3{
+    display: block;
+    color: white;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid purple;
+}
+.text-box::before{
+    position: absolute;
+    top: 6px;
+    left: 162px;
+    content: "";
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-search-input.png);
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    display: block;
+
+}
+.text-box{
+    position: relative;
+}
+.text-box input{
+    padding-right: 24px;
+}

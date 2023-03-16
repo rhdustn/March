@@ -1,0 +1,97 @@
+div{
+    border: 1px solid black;
+    width: 300px;
+    height: 300px;
+}
+
+div img{
+    width: 100%;
+    height: 100%;
+}
+
+.box img{
+    transform: translate(10px, 100px);
+    /* transform : transform(x축, y축)
+    해당 태그 위치 이동 */
+    /* transf */
+}
+.box2 img{
+    transform: translateX(100px);
+    /* y축은 없고 x축만 이동 */
+  /* translateX(X축의 값) */
+}
+.box2 img{
+    /* 같은 선택자 일때 CSS및에 있는 속성이 적용된다 */
+    transform: translateY(100px);
+    /* x축은 없고 y축만 이동 */
+    /* translateY(Y축의 값) */
+}
+
+.box3 img{
+    transform: scale(2,2);
+    /*  
+    1이 기본 크기고
+    크키를 조정 할 수 있다
+    0.5=50%의 태그의 크기
+    두 값을 입력하면 X크기 Y크기 조절이 가능하다
+    */
+}
+.box4 img{
+    transform: rotate(90deg);
+    /* 태그를 회전 시켜준다. 값은 각도로 입력 45deg는 45도 회전 */
+}
+
+/* css에서 애니메이션을 작성 할 때 사용한다 @keyframes 뒤에 작성된게 애니메이션의 이름 */
+@keyframes ani {
+    0%{
+        /* 전체 동작중 0~50%까지의 내용 */
+        transform: rotate(0);
+    }
+    50%{
+        /* 전체 동작중에 50일때 */
+        transform: rotate(360deg);
+    }
+    100%{
+        /* 전체 동작하면서 50~100%  */
+        transform: rotate(0);
+    }
+}
+
+.box5 img{
+    /* animation : keyframes의 이름 시간 변화 방법 */
+    /* animation: ani 1s ease; */
+}
+
+.box5 img{
+    transition: transform 3s linear, border 1s ease-in-out, border-radius 1s ease-in-out;
+    /* 스타일의 값이 변하면서 효과를 줄 수 있다
+    transition 에 대하여 변화하는 시간 변화릐 방법을 설명 
+    transition: transform 3s 속성이 3초긴 변화하고
+     border 1s border 값이 1초동안 뱐화
+    border-radius 1s 값이 1초동인 변화(모서리 둥글게)
+    */
+}
+
+.box5:hover img{
+    /* hover 마우스가 태그에 올려졌을 때 */
+    transform: rotate(720deg);
+    border: 10px solid red;
+    border-radius: 50%;
+}
+
+.box6{
+    position: relative;
+}
+
+.box6 img{
+    position: absolute;
+   top: 50%;
+   left: 50%;
+   /* 상50% 좌50% 태그 이동시키고  */
+
+   transform: translate(-50%, -50%);
+   /* 태그의 반지름 만큼 좌로 50%이도으 위로 50% 이동 */
+   
+   width: 200px;
+   height: 200px;
+}

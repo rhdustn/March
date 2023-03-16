@@ -1,0 +1,13 @@
+/* 폰트 파일을 다운받고
+@font-face 작성한다 
+@font-face{
+    font-family : 사용할 퐁트의 */
+
+@font-face{
+    font-family: 'noto';
+    src:url(./Noto_Sans_KR\ \(1\)/) format('truetype')
+}
+
+body{
+
+}

@@ -1,0 +1,17 @@
+.tab-meun> input{
+    display: none;   
+}
+.tab-meun> input + label{
+    display: inline-block;
+    padding: 20px;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    width: 103px;
+}
+.tab-meun>input:checked + label {
+    background-color: beige;
+    font-size: 20px;
+    color: black
+}
