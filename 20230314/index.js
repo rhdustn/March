@@ -1,7 +1,7 @@
 // 오늘은 함수!
 
 // 함수는 실행할 코드들의 이름을 지어준다 (반복사용하는 기능들을 묶어서 관리한다.)
-//function 함수이름() {실핼시킬 코드들}
+//function 함수이름() {실행시킬 코드들}
 function fun(){
     console.log("fun 함수 실행됨");
     console.log("fun 함수 실행됨");

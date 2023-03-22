@@ -25,12 +25,14 @@ checked 속성이 있르면 인접 현제 태그인 lable에 스타일을 적용
     font-size: 20px;
     color: black;
     border: 1px solid purple;
+    background-color: gray;
+    border-radius: 10px;
 }
 .box{
     width: 500px;
     height: 600px;
 
-    display: none;
+    display: block;
 
 }
 /* input태그중 class가 tab01 이고 checked 속성이 이ㅛ고 형제요소
@@ -38,19 +40,22 @@ checked 속성이 있르면 인접 현제 태그인 lable에 스타일을 적용
 input[class="tab01"]:checked~.item1{
     display: block;
     color: white;
-    border: 1px solid purple;}
+    border: 1px solid purple;
+    border-radius: 10px;}
     
 input[class="tab02"]:checked~.item2{
     display: block;
     color: white;
     background-color: rgb(255, 255, 255);
     border: 1px solid purple;
+    border-radius: 10px;
 }
 input[class="tab03"]:checked~.item3{
     display: block;
     color: white;
     background-color: rgb(255, 255, 255);
     border: 1px solid purple;
+    border-radius: 10px;
 }
 .text-box::before{
     position: absolute;
