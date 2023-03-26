@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         li{
+            width: 800px;
+            height: 40px;
+            display: flex;
+    
+        }
+
+        li > div{
+            width: 150px;
+            height: 40px;
+            border: 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <label for="">할 일</label>
+    <input type="text">
+    <label for="">걸리는 시간</label>
+    <input type="text">
+    <label for="">준비물</label>
+    <input type="text">
+    <label for="">완료 여부</label>
+    <input type="text">
+  
+
+    <button id="addBtn">추가</button>
+    <!-- <button id="deleteBtn">삭제</button> -->
+    <div id="_div">
+    </div>
+
+    
+
+</body>
+<script>
+let index = 0;
+
+let _json ='{"key" : "value" }';
+
+    // console.log(_json);
+    // //JSON객체 안에 있는 parse메소드가 객체로 객체행테의 문자열을 파싱해준다
+    // console.log(JSON.parse(_json));
+    // let obj = {key : 24};
+    // //객체를 문자열로 변환
+    // //stringify : 객체를 문자열로 변환
+    // console.log(JSON.stringify(obj));
+    // window.localStorage.clear();
+function addList(){
+    let inputs = document.querySelectorAll("input");
+    let value = window.localStorage.getItem("to-do-list");
+    if(window.localStorage.length ==0){
+        window.localStorage.setItem("to-do-list",`{"work" : "${inputs[0].value}", "time" : "${inputs[1].value}", "supplies" : "${inputs[2].value}", "finish" : "${inputs[3].value}","index" : "${index}"}`);
+    }else{
+        window.localStorage.setItem("to-do-list",value + "|" +`{"work" : "${inputs[0].value}", "time" : "${inputs[1].value}", "supplies" : "${inputs[2].value}", "finish" : "${inputs[3].value}","index" : "${index}"}`);
+    }
+    index++;
+    console.log(window.localStorage.getItem("to-do-list"));
+    render();
+}
+
+
+       
+function deleteList(){
+  addList.remove
+       
+      
+    // 전체삭제
+    // window.localStorage.clear();
+    // // 다 없어진 정보를 불러와서 띄워주나, 그냥 임의로 ''를 넣어주나 결과는 같다.
+    // _div.innerHTML=''
+    // _li.remove(_div1,_div2,_div3,_div4);
+    // _ul.remove(_li);
+
+}
+
+function render(){
+    let _json = window.localStorage.getItem('to-do-list');
+    _json = _json.split("|");
+    console.log(_json);
+    _div.innerHTML = "";
+    let _ul = document.createElement("ul")
+    let _li = document.createElement("li")
+    let _div1 = document.createElement("div")
+    let _div2 = document.createElement("div")
+    let _div3 = document.createElement("div")
+    let _div4 = document.createElement("div")
+    let _div5 = document.createElement("div")
+    _div1.innerHTML = "할 일"
+    _div2.innerHTML = "걸리는 시간";
+    _div3.innerHTML = "준비물";
+    _div4.innerHTML = "난이도";
+    _div5.innerHTML = "삭제";
+// 배열에서 특정한 값을 가지거나 가지지 않은 배열을 return하는 메소드
+    _li.append(_div1,_div2,_div3,_div4,_div5);
+    _ul.append(_li);
+    _json.forEach(function(i,index){
+        let _li = document.createElement("li");
+        let _div1 = document.createElement("div")
+        let _div2 = document.createElement("div")
+        let _div3 = document.createElement("div")
+        let _div4 = document.createElement("div")
+        let _btn = document.createElement("button");
+       
+        _div1.innerHTML = JSON.parse(i).work;
+        _div2.innerHTML = JSON.parse(i).time;
+        _div3.innerHTML = JSON.parse(i).supplies;
+        _div4.innerHTML = JSON.parse(i).finish;
+        _btn.innerHTML = JSON.parse(i).delete;
+       
+        _btn.onclick = function(){
+            let value = window.localStorage.getItem("to-do-list");
+            console.log(index)
+            _json.pop(index);
+            console.log(_json.join("|"));
+            let str = _json.join("|")
+            window.localStorage.setItem("to-do-list",str);
+
+            // console.log("hello",index);
+        }
+        // let filterbtn = _index.filter(function(index){
+        //     return index!==_btn
+        // })// console.log(index);
+         _li.append(_div1,_div2,_div3,_div4,_btn);
+        _ul.append(_li);
+    })
+    _div.append(_ul);
+}
+if(window.localStorage.length !=0){
+       render();
+    }
+
+addBtn.addEventListener("click",addList);
+// _btn.addEventListener("click")
+// deleteBtn.addEventListener("click",deleteList);
+</script>
+</html>

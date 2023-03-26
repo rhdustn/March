@@ -103,9 +103,9 @@ console.log(getCookie2("이벤트 팝업2"));
 
 //setItem 값을 키값과 함께 저장시켜준다.
 
-//window.localStorage.setItem("유저_id","soo");
-// let a = window.localStorage.getItem("user_id");
-// console.log(a);
+window.localStorage.setItem("유저_id","soo");
+let a = window.localStorage.getItem("user_id");
+console.log(a);
 
 //쿠키, 로컬스토리지 이런 저장소에 민감한 값을 저장하면 안된다.
 // 보안이슈
