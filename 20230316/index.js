@@ -54,13 +54,13 @@ let arr2 = {
             let b =9;
             let c =10;
             let d =5
-            console.log("나는 callback 함수야 매개변수 세개를 받았어")
+            console.log("나는 callback 함수야 매개변수 네개를 받았어")
             callBack(a,b,c, d);
         }
     }
 } 
-arr2.map(function(a, b, c ,d){
-    console.log("나는 콜백 함수야 전달받은 매개변수는", + a + b +c +d,"야")
+arr2.map(function(a,b,c, d){
+    console.log("나는 콜백 함수야 전달받은 매개변수는", + a + b + c+ d + "야")
 });
 
 
@@ -123,7 +123,7 @@ let obj2 = {
 
 // 어떻게 만들어도 상관은 없지만 
 //기능단위로 함수를 만드는 습관은 가지는게 좋다
-function temp3(a, b, c){
+function temp3(a, b, c ){
     for (let i = 1; i < 10; i++) {
         console.log(`${a} X ${i} = ${a * i} ` )
     }

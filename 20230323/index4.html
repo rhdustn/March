@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            width: 800px;
+            height: 80px;
+            display: flex;
+        }
+
+        li > div{
+            width: 150px;
+            height: 80px;
+            border: 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        li > button{
+            width: 200px;
+            height: 80px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <label for="">해야할 일</label>
+    <input type="text" name="" id="">
+    <label for="">중요도</label>
+    <input type="text" name="" id="">
+    <label for="">시간</label>
+    <input type="text" name="" id="">
+
+    <button id="addBtn">추가</button>
+
+    <div id="_div">
+
+    </div>
+</body>
+<script>
+    // JSON 문자열을 다뤄보자
+    // 객체처럼 생겼음 문자열
+    // 데이터를 문자열로 받아서
+    // 객체로 변환해서 사용하기 위해
+   
+    // let _json = '{"key" : "value"}';
+    // console.log(_json);
+    // // JSON객체 안의 parse메소드가 객체로 객체형태의 문자열을 파싱해준다.
+    // // 객체로 변환해준다.
+    // console.log(JSON.parse(_json));
+    // let obj = {key : 24};
+    // // 객체를 문자열로 변환
+    // // stringify : 객체를 문자열로 변환
+    // console.log(JSON.stringify(obj));
+    //  window.localStorage.clear();
+ let index=0;
+    function addList(){
+        let inputs = document.querySelectorAll("input");
+        let value = window.localStorage.getItem("to-do-list");
+        // window.localStorage.clear();
+        if(window.localStorage.length == 0){
+            window.localStorage.setItem("to-do-list",`{"work" : "${inputs[0].value}", "level" :" ${inputs[1].value}", "time" : "${inputs[2].value}", "index" : "${index} }`);
+        }else{
+            window.localStorage.setItem("to-do-list",value + "|" + `{"work" : "${inputs[0].value}", "level" :" ${inputs[1].value}", "time" : "${inputs[2].value}", "index" : "${index} }`);
+        }
+        index++;
+        console.log(window.localStorage.getItem("to-do-list"));
+        render();
+        // 문자열을 객체로 변환
+        // let _json = JSON.parse(window.localStorage.getItem("게시판"));
+        // console.log(_json);
+    }
+
+    function render(){
+        let _json = window.localStorage.getItem("to-do-list");
+        _div.innerHTML = "";
+        // 문자열에서 "|" 문자열마다 잘라서 배열로 변경
+        _json = _json.split("|");
+        console.log(_json);
+        let _ul = document.createElement("ul");
+        let _li = document.createElement('li');
+        let _div1 = document.createElement("div");
+        let _div2 = document.createElement("div");
+        let _div3 = document.createElement("div");
+        let _div4 = document.createElement("div");
+        let _del = document.createElement("div");
+        _div1.innerHTML = "해야할 일";
+        _div2.innerHTML = "중요도";
+        _div3.innerHTML = "시간";
+        _div4.innerHTML = "번호";
+        _del.innerHTML = "delete";
+
+        _li.append(_div1,_div2,_div3,_div4,_del);
+        _ul.append(_li);
+
+    
+        _json.forEach(function(i,index){
+            let _li = document.createElement("li");
+            let _div1 = document.createElement("div");
+            let _div2 = document.createElement("div");
+            let _div3 = document.createElement("div");
+            let _div4 = document.createElement("div");
+            let _del = document.createElement("button");
+            _div1.innerHTML = JSON.parse(i).work;
+            _div2.innerHTML = JSON.parse(i).level;
+            _div3.innerHTML = JSON.parse(i).time;
+            _div4.innerHTML = `${index}`
+            _del.classList.add("_del");
+            
+            _del.onclick = function(){
+                let value = window.localStorage.getItem("to-do-list");
+                console.log(index);
+                _json.pop(index);
+                console.log(_json);
+                console.log(_json.join("|"));
+                let str = _json.join("|")
+                window.localStorage.setItem("to-do-list",str);
+            }
+            _li.append(_div1,_div2,_div3,_div4);
+            _ul.append(_li);
+        })
+        _div.append(_ul);
+    }
+
+    if(window.localStorage.length != 0)
+    {
+        render();
+    }
+
+    addBtn.addEventListener("click",addList);
+</script>
+</html>

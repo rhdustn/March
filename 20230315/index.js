@@ -86,7 +86,7 @@ let return4 = arr.find(function(i){
     // i 매개변수에
     console.log("item" +i);
     //return 값이 ture 의 값이 반환되면 해당 아이템을 find 함수에서 반환해준다
-    return i ==="딸기";
+    return i ==="포도";
 });
 //ture 가 나온 첫번째 값을 뱐환한다
 //값을 내보내면 함수가 종료된다.
@@ -144,9 +144,9 @@ console.log(arr3.join("&"));
 // 배열을 문자열로 변경시켜준다.
 // 배열에 들어있는 값들의 구분을 매개변수로 전달한 문자열로 해준다
 
-let str3 = arr3.join("-");
+let str3 = arr3.join("^");
 //split 함수
 // 문자열을 배열로 변경
 // split 함수의 매개변수로 문자열 값을 자를 문자값을 넣어주면 된다.
 // "," 값을 매개변수로 전달하면 문자열에서 , 의 문자를 잘라서 배열의 형태로 변경시켜준다
-console.log(str3.split("-"));
+console.log(str3.split(","));

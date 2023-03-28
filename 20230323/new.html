@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ul{
+            display: flex;
+            flex-direction: row;
+        } */
+        li{
+            width: 800px;
+            height: 80px;
+            display: flex;
+        }
+        li > div{
+            width: 200px;
+            height: 80px;
+            border: 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+        li > button{
+            width: 200px;
+            height: 80px;
+            border: 1px solid;
+        }
+        
+    </style>
+</head>
+<body>
+    <label for="">오늘 할 일</label>
+    <input type="text" name="" id="">
+    <label for="">시간</label>
+    <input type="text" name="" id="">
+    
+    <button id="btn"> 등록</button>
+    <div id="_list">
+
+    </div>
+</body>
+<script>
+// window.localStorage.clear()
+let index = 0
+function addlist(){
+        let input = document.querySelectorAll("input")
+        let value = window.localStorage.getItem("list")
+        // ,"삭제" : "${del}"
+        if(window.localStorage.length == 0){
+            window.localStorage.setItem("list", `{"todo" : "${input[0].value}", "time" : "${input[1].value}", "index" : "${index}"}`);    
+        }else {
+            window.localStorage.setItem("list", value + "|" + `{"todo" : "${input[0].value}", "time" : "${input[1].value}", "index" : "${index}"}`);  
+        }
+        // window.localStorage.setItem("list", `{"todo" : "${input[0].value}", "time" : "${input[1].value}", "index" : "${index}"}`)
+        index++;
+
+
+       
+        console.log(window.localStorage.getItem("list"));
+        render();
+        
+    }
+
+
+
+    function render(){
+        let rocal = window.localStorage.getItem("list");
+        _list.innerHTML = "";
+        rocal = rocal.split("|");
+        console.log(rocal);
+
+        let _ul = document.createElement("ul");
+        let _li = document.createElement("li");
+        let list = document.createElement("div");
+        let list2 = document.createElement("div");
+        let ind = document.createElement("div");
+        let del = document.createElement("div")
+        list.innerHTML = "오늘 할 일";
+        list2.innerHTML = "시간";
+        ind.innerHTML = "번호"
+        del.innerHTML = "삭제";
+        _li.append(list, list2, del,ind)
+        _ul.append(_li)
+
+        rocal.forEach(function(i,index) {
+            let _li = document.createElement("li");
+            let list = document.createElement("div");
+            let list2 = document.createElement("div");
+            let ind = document.createElement("div");
+            let del = document.createElement("button");
+            list.innerHTML = JSON.parse(i).todo;
+            list2.innerHTML = JSON.parse(i).time;
+            ind.innerHTML = `${index}`
+            // del.innerHTML = "<button>삭제</button>"
+            del.classList.add("del");
+
+            del.onclick = function() {
+                let value = window.localStorage.getItem("list");
+                console.log(index);
+                rocal.pop(index);
+                console.log(rocal);
+                console.log(rocal.join("|"));
+                let str = rocal.join("|")
+               window.localStorage.setItem("list",str);
+                // let vindex = value.some(function(i,v) {
+                    
+                //     return i.index == JSON.parse(i).index
+                //     }
+                // );
+                // value.splice(vindex, 1);
+                
+            }; 
+
+            _li.append(list, list2, del,ind)
+            _ul.append(_li)
+        });
+        _list.append(_ul);
+    }
+    if(window.localStorage.length !=0){
+       render();
+    }
+    // function del(index){
+    //     window.localStorage.removeItem(index);
+    //     console.log("삭제됨00");
+    // }
+
+    btn.addEventListener("click", addlist);
+
+
+    // let del = document.querySelector("");
+    // del.addEventListener("click", del);
+   
+</script>
+</html>

@@ -13,13 +13,12 @@
 // //실행 안되게 할 수 있겠구나
 // }
 
-// let age = 5;
-// let age2 = 5;
-// //age 보다 age2기 깂ㅇ; 크니까 true 라서 if 문 조건에 맞음
+let age = 5;
+let age2 = 5;
 
-// // if(age<age2){
-// //     console.log("내 나이가 작구나")
-// // }
+// if(age<age2){
+//     console.log("내 나이가 작구나")
+// }
 
 // //false 면 실핼 시키고 싶은데
 // //else if 가 아닐때 false

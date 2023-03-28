@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .swiper-wrap{
+            width: 500px;
+            height: max-content;
+           
+            position: relative;
+            margin: auto;
+        }
+        .swiper{
+            width: 500px;
+            height: 500px;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+        }
+        .swiper-content{
+            width: max-content;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            transition: 1s;
+            display: flex;
+            list-style: none;
+            /* 이벤트 제거 */
+           
+        }
+        .swiper-item{
+            width: 500px;
+            height: 100%;
+            border: 1px solid;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+             pointer-events: none;
+        }
+        .prev, .next{
+            /* 부모보다 앞으로 */
+            /* position 속성 있을떄 */
+            z-index: 1;
+            position: absolute;
+            top : 50%;
+            transform: translate(-50%);
+            width: 50px;
+            border: 1px solid;
+        }
+        .prev{
+            left: 26px;
+            
+        }
+        .next{
+            right: -28px;
+        }
+    </style>
+</head>
+<body>
+    <!-- swiper 라이브러리를 사용하면 빠르고 편리한데 수정이 어렵다 -->
+    <div class="swiper-wrap">
+        <div class="swiper">
+        <span class="prev">이전</span>
+        <span class="next">다음</span>
+        <ul class="swiper-content">
+            <li class="swiper-item">4</li>
+            <li class="swiper-item">1</li>
+            <li class="swiper-item">2</li>
+            <li class="swiper-item">3</li>
+            <li class="swiper-item">4</li>
+            <li class="swiper-item">1</li>
+
+        </ul>
+    </div>
+</div>
+</body>
+<script src="./index.js"></script>
+</html>

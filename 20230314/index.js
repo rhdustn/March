@@ -102,6 +102,8 @@ vending(1000, 100);
 
 let e = vending;
 console.log(e);
+console.log(e);
+
 //e라는 변수에 vending 함수라는 값이 들어왔디 땨문에 함수 실행식처럼 사용이 가능하다
 e(1000,100);
 let f = vending();// ()함수의 실행식인데.. 함수가 실행시키는건데 아게 담길까?
@@ -151,8 +153,8 @@ function type(value){
             
     }
 }
-type(1);
-console.log(type(1));
+
+console.log(type(2));
 
 
 // 어제 과제 하던거 그대로 이어서  오늘 복습날 했던거
