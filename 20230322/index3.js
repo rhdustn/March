@@ -53,7 +53,7 @@ function createCookie(name, value, time){
     // toUTCString 메소드 날짜 시간 표시 방법을 변경해준다
     console.log(date.toUTCString())
     // 날짜 형태를 변경해서 Wed, 22 Mar 2023 04:47:10 GMT 이런식으로 
-    document.cookie =name+"="+value+";expirse"+date.toUTCString()+"path=/";
+    document.cookie =name+"="+value+";expires="+date.toUTCString()+"path=/20230322";
 }
 createCookie("이벤트 팝업","true",1);
 createCookie("이벤트 팝업2","true",1);
@@ -83,11 +83,11 @@ function deleteCookie(name){
     document.cookie = name +"=; expires=Thu. 01 Jan 1999 00:00:10 GMT,";
 
 }
-deleteCookie("이벤트 팝업");
-deleteCookie("이벤트 팝업2");
+// deleteCookie("이벤트 팝업");
+// deleteCookie("이벤트 팝업2");
 
-console.log(getCookie2("이벤트 팝업"));
-console.log(getCookie2("이벤트 팝업2"));
+// console.log(getCookie2("이벤트 팝업"));
+// console.log(getCookie2("이벤트 팝업2"));
 
 
 // 로컬스토리지

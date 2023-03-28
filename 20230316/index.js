@@ -10,12 +10,16 @@ function test(callBack){
     console.log("3번 작업끝");
 
     if (true) {
-        callBack()
+        // 1+2
+        console.log(callBack(1,2))
+        //console.log(callBack())
+        //callBack()
     }
 }
 
-function test2(){
-        console.log(' 나는 콜백함수야');
+function test2(a,b){
+        return a+b
+        //console.log(' 나는 콜백함수야');
 }
 
 test(test2);
@@ -117,7 +121,7 @@ let obj2 = {
     }
 }
 
-// ㄹ어떻게 만들어도 상관은 없지만 
+// 어떻게 만들어도 상관은 없지만 
 //기능단위로 함수를 만드는 습관은 가지는게 좋다
 function temp3(a, b, c){
     for (let i = 1; i < 10; i++) {
@@ -190,7 +194,7 @@ temp4();
 // 함수와 같이 매개변수는 괄호에 넣으면 된다
 let temp5 = () => 3* 5;
 
-let ab = temp5();
+let ab = temp5(ab);
 console.log(ab);
 
 // 연결된 개념을 좀 설명 
