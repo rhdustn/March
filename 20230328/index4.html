@@ -32,6 +32,7 @@
 </head>
 <body>
     <div>
+        <h1>난이도</h1>
         <!--버튼 가위 바위 보 -->
         <div class="game-warp">
             <!-- player 선택한 이미지 -->
@@ -85,7 +86,7 @@
             // &&  둘가 ture 일때
         }else if(player == "rock" && comSelect =="scissors" || 
                 player ==  'paper' && comSelect =="rock"||
-                player == "scissors" ** comSelect == "paper"){
+                player == "scissors" && comSelect == "paper"){
             // 이기는 조건
             return{value : "승리", text : "축하"}
         }else{
@@ -94,5 +95,8 @@
         }
         // 함수 실행하면 반환값이 객체다
     }
+    // <input id ="easy" name="check" type="radio"> 쉬움
+    //     <input id ="hard" name="check" type="radio"> 어려움
+    //     <input id ="very-hard" name="check" type="radio"> 매우 어려움
 </script>
 </html>

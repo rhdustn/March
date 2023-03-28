@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+    <style>
+        .player-select,
+        .com-select {
+            width: 160px;
+            height: 154px;
+            background-image: url('./img.png');
+            background-repeat: no-repeat;
+            background-size: 440px;
+            background-position-x: 25px;
+            border: 1px solid;
+        }
+
+        .rock {
+            background-position-x: 10px;
+        }
+
+        .paper {
+            background-position-x: -275px;
+        }
+
+        .scissors {
+            background-position-x: -130px;
+        }
+
+        .game-warp {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>난이도</h1>
+        <input id="easy" name="check" type="radio"> 쉬움
+        <input id="hard" name="check" type="radio"> 어려움
+        <input id="veryHard" name="check" type="radio"> 매우 어려움
+        <!--버튼 가위 바위 보 -->
+        <div class="game-warp">
+            <!-- player 선택한 이미지 -->
+            <div class="player-select">player </div>
+            <div class="com-select">com </div>
+
+        </div>
+        <h2 class="result">결과</h2>
+        <p class="subresult">내용</p>
+        <button class="player-btn">가위</button>
+        <button class="player-btn">보</button>
+        <button class="player-btn">바위</button>
+        <h1>예산</h1>
+        <p class="budget">
+        </p>
+    </div>
+</body>
+<script>
+
+    // class 의 이름으로 사용하고 결과에서도 사용할 가위 바위 보를 담은 문자열 배열 만들잔
+    let gameArr = ["scissors", "paper", "rock"];
+    let playerBtns = document.querySelectorAll('.player-btn');
+    // player 화면 선택한 결과를 보여줄 태그
+    let playerSelect = document.querySelector('.player-select');
+    let comSelect = document.querySelector('.com-select');
+    let budget = 1;
+    let comBudget=1;
+  
+    let play = true;
+    let toggle = true;
+
+        while (budget <= 0 ) {
+        alert("게임이 불가능 합니다")
+            break;
+        }
+
+        while (comBudget <=0 ) {
+        alert("게임이 불가능 합니다")
+            break;
+        }
+    
+
+    document.getElementById("easy").addEventListener("click", function () {
+        budget = 100000;
+        comBudget = 100000
+        let div01 = document.createElement('div');
+        document.querySelector('.budget').innerHTML = ''
+        div01.innerHTML = 100000
+        document.querySelector('.budget').append(div01)
+    });
+    document.getElementById("hard").addEventListener("click", function () {
+        budget = 50000;
+        comBudget = 50000
+
+        let div01 = document.createElement('div');
+        document.querySelector('.budget').innerHTML = ''
+        div01.innerHTML = 50000
+        document.querySelector('.budget').append(div01)
+    });
+    document.getElementById("veryHard").addEventListener("click", function () {
+        budget = 10000;
+        comBudget = 10000
+
+        let div01 = document.createElement('div');
+        document.querySelector('.budget').innerHTML = ''
+        div01.innerHTML = 10000
+        document.querySelector('.budget').append(div01)
+    });
+
+
+    // 컴퓨터의 결과를 보여줄 태그
+
+    function init() {
+        gameArr.forEach(function (item, index) {
+            // "scissors", "paper", "rock" 순서대로 아이템이 담긴다
+            // index =0,1,2 순서대로
+            //  playerBtns[0]
+            playerBtns[index].addEventListener('click', function () {
+                // player 화면 선택한 기위나 바위 보 이미지르,ㄹ 보여주는 태그
+                // class 추가하되 "player-select를 유지하고 새로운 클래스를 추가해주자
+                playerSelect.className = "player-select " + item;
+                // 구조분해 할당으로 받고
+                // 가위바위보로할지,묵찌빠로할지 정해주자!
+                let { value, text, text2 } = gameStart(item);
+                // 결과
+                document.querySelector('.result').innerHTML = value;
+                // 내용
+                document.querySelector('.subresult').innerHTML = text;
+                document.querySelector('.budget').innerHTML = text2;
+
+                // let{value2,text3,text4}=gameStart2(item);
+                // document.querySelector('.result').innerHTML = value2;
+                // // 내용
+                // document.querySelector('.subresult').innerHTML = text3;
+                // document.querySelector('.buget').innerHTML = text4;
+            })
+        })
+
+    }
+    init();
+    let token = "";
+    function gameStart(player) {
+
+        if (toggle) {
+
+            // 랜덤값으로 gameArr 배열안에 가위 바위 보를 가져오자
+            let comSelect = gameArr[Math.floor(Math.random() * gameArr.length)]
+            document.querySelector('.com-select').className = "com-select " + comSelect;
+            // 무승부 거르고 시작
+            if (player == comSelect) {
+                return { value: "무승부", text: "다시해", text2: budget }
+
+                // &&  둘가 ture 일때
+            } else if (player == "rock" && comSelect == "scissors" ||
+                player == 'paper' && comSelect == "rock" ||
+                player == "scissors" && comSelect == "paper") {
+                token = 1;
+                toggle=false;
+                // 이기는 조건
+                return { value: "가위바위보 승리", text: "묵찌빠의 선공을 가져갑니다", text2: budget }
+
+            } else {
+                token = 2;
+                toggle=false;
+                return { value: "가위바위보 패배", text: "컴퓨터가 묵찌빠의 선공을 가져갑니다", text2: budget }
+
+            }
+            // 함수 실행하면 반환값이 객체다
+
+        } else {
+            return gameStart2(player)
+        }
+
+    }
+    //-------------------------------묵찌빠-------------
+    function gameStart2(player) {
+        let comSelect = gameArr[Math.floor(Math.random() * gameArr.length)]
+        let comBetting = Math.floor(Math.random() * 1000) + 2000
+        document.querySelector('.com-select').className = "com-select " + comSelect;
+        if (player == comSelect) {
+            if (token == 1) {
+            budget= budget +comBetting;
+            comBudget = comBudget-comBetting;
+        while (comBudget <=0 ) {
+        alert("player가 더이상 게임을 할 수 없습니다")
+            break;
+        }
+            toggle=true;
+                return { value: "player win", text: "축하합니다",text2 : budget }
+            } else if (token == 2) {
+                budget= budget -comBetting;
+            comBudget = comBudget+comBetting;
+
+            while (budget <=0 ) {
+        alert("com이 더이상 게임을 할 수 없습니다")
+            break;
+        }
+            toggle=true;
+                return { value: "computer win", text: "졌습니다",text2 : budget }
+            }
+        } else if (player == "rock" && comSelect == "scissors" ||
+            player == 'paper' && comSelect == "rock" ||
+            player == "scissors" && comSelect == "paper") {
+token=1;
+            return { value: "", text: "묵찌빠의 선공을 가져갑니다",text2 : budget }
+        }  else {
+            token =2;
+            return { value: "", text: "컴퓨터가 묵찌빠의 선공을 가져갑니다",text2 : budget }
+        }
+    }
+
+</script>
+
+</html>
