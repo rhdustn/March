@@ -12,12 +12,11 @@ function test(callBack){
     if (true) {
         // 1+2
         console.log(callBack(1,2))
-        //console.log(callBack())
-        //callBack()
     }
 }
 
 function test2(a,b){
+    console.log(a,b)
         return a+b
         //console.log(' 나는 콜백함수야');
 }
@@ -26,10 +25,18 @@ test(test2);
 
 //배열 매소드
 let arr = [1,2,3,4,5];
-arr.map(function(i,v){
-    console.log(i);
-    console.log(v);
+arr.map(function(a,i){
+    console.log(a)
 })
+console.log(arr.map(function (a,i) {
+    yeon(a);
+}));
+
+function yeon(a) {
+    console.log(a);
+    console.log('e');
+    return ;
+}
 
 //배열 매소드 map을 흉내내보자
 //우리가 만든 객체
@@ -151,10 +158,12 @@ obj2.gugu(temp3)
 
 // 함수를 만들어 보자
 function fun1(){
-    fun2();
+    fun2();    
+    console.log("난 1번 ")
 }
 function fun2(){
     fun3();
+    console.log("난 2번.")
 }
 function fun3(){
     console.log("난 3번 안녕 마지막으로 실행한 함수야.")
@@ -192,10 +201,10 @@ temp4();
 // 함수에서 값을 반환할 때 return 식을 사용해서 반환했는데
 // return 없이도 반환 시킬 수 있다.
 // 함수와 같이 매개변수는 괄호에 넣으면 된다
-let temp5 = () => 3* 5;
+// let temp5 = () => 3*5;
 
-let ab = temp5(ab);
-console.log(ab);
+// let ab = temp5(ab);
+// console.log(ab);
 
 // 연결된 개념을 좀 설명 
 // 제일 중요하고 큰 차이점 면접에서 질문으로 나올 수 있다.

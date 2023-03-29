@@ -31,14 +31,14 @@ console.log(obj == obj3);
 // 객체의 키 앞에 ? 구문을 추가해서 작성
 
 let obj4 = {name : "yeon", content : "내용"};
-// obj4?.name
+//  obj4?.name
 // name의 키값이 있는지 확인 없으면 undefined 를 던진다
 // 오루가 나지 않게 방지해준다
 
 // 오루가 나지 않는 이유는 객체의 키값을 확인하고 
 // type 에러가 나지 않게 방지해주기 때문.
 
-console.log(obj4?.age);
+console.log(obj4?.name);
 
 let obj5 = {
     name : "yeon",
@@ -46,5 +46,5 @@ let obj5 = {
         age :1
     }
 }
-console.log(obj5.content.key);
+console.log(obj5?.content);
 // node 환경에서 보여준다

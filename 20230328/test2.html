@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>가위바위보</title>
     <style>
+        h1{
+            background-color: pink;
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            border-radius: 15px;
+        }
+       
         .player-select,
         .com-select {
             width: 160px;
@@ -38,7 +46,7 @@
 
 <body>
     <div>
-        <h1>난이도</h1>
+        <h1 >난이도</h1>
         <input id="easy" name="check" type="radio"> 쉬움
         <input id="hard" name="check" type="radio"> 어려움
         <input id="veryHard" name="check" type="radio"> 매우 어려움
@@ -54,14 +62,12 @@
         <button class="player-btn">가위</button>
         <button class="player-btn">보</button>
         <button class="player-btn">바위</button>
-        <h1>예산</h1>
+        <h2>예산</h2>
         <p class="budget">
         </p>
     </div>
 </body>
 <script>
-
-    // class 의 이름으로 사용하고 결과에서도 사용할 가위 바위 보를 담은 문자열 배열 만들잔
     let gameArr = ["scissors", "paper", "rock"];
     let playerBtns = document.querySelectorAll('.player-btn');
     // player 화면 선택한 결과를 보여줄 태그
@@ -82,38 +88,26 @@
         alert("게임이 불가능 합니다")
             break;
         }
-    
+//------------------예산 정하기------------------
 
+function repeat(money){
+    budget = money;
+    comBudget = money;
+    let div01 = document.createElement('div');
+     div01.innerHTML = money;
+    document.querySelector('.budget').innerHTML = ''
+    document.querySelector('.budget').append(div01)
+}
     document.getElementById("easy").addEventListener("click", function () {
-        budget = 100000;
-        comBudget = 100000
-        let div01 = document.createElement('div');
-        document.querySelector('.budget').innerHTML = ''
-        div01.innerHTML = 100000
-        document.querySelector('.budget').append(div01)
+        repeat(100000);
     });
     document.getElementById("hard").addEventListener("click", function () {
-        budget = 50000;
-        comBudget = 50000
-
-        let div01 = document.createElement('div');
-        document.querySelector('.budget').innerHTML = ''
-        div01.innerHTML = 50000
-        document.querySelector('.budget').append(div01)
+        repeat(50000);
     });
     document.getElementById("veryHard").addEventListener("click", function () {
-        budget = 10000;
-        comBudget = 10000
-
-        let div01 = document.createElement('div');
-        document.querySelector('.budget').innerHTML = ''
-        div01.innerHTML = 10000
-        document.querySelector('.budget').append(div01)
+        repeat(10000);
     });
-
-
-    // 컴퓨터의 결과를 보여줄 태그
-
+   
     function init() {
         gameArr.forEach(function (item, index) {
             // "scissors", "paper", "rock" 순서대로 아이템이 담긴다
@@ -152,7 +146,7 @@
             document.querySelector('.com-select').className = "com-select " + comSelect;
             // 무승부 거르고 시작
             if (player == comSelect) {
-                return { value: "무승부", text: "다시해", text2: budget }
+                return { value: "무승부", text: "다시 가위바위보를 해주세요", text2: budget }
 
                 // &&  둘가 ture 일때
             } else if (player == "rock" && comSelect == "scissors" ||
@@ -186,17 +180,17 @@
             budget= budget +comBetting;
             comBudget = comBudget-comBetting;
         while (comBudget <=0 ) {
-        alert("player가 더이상 게임을 할 수 없습니다")
+        alert("com이 예산이 없어 더이상 게임을 할 수 없습니다")
             break;
         }
             toggle=true;
                 return { value: "player win", text: "축하합니다",text2 : budget }
             } else if (token == 2) {
                 budget= budget -comBetting;
-            comBudget = comBudget+comBetting;
+                comBudget = comBudget+comBetting;
 
             while (budget <=0 ) {
-        alert("com이 더이상 게임을 할 수 없습니다")
+        alert("player가 예산이 없어 더이상 게임을 할 수 없습니다")
             break;
         }
             toggle=true;
