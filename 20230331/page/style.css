@@ -26,9 +26,11 @@ body{
     width: 700px;
 }
 .header li{
+text-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;
    margin: 15px;
    font-size: 30px;
-   font-weight: 700;
+   font-weight: 600;
+   color: rgb(156, 234, 255);
 }
 .header li:hover{
     color: rgb(248, 197, 29);
@@ -70,15 +72,11 @@ body{
 .main .content-01{
     width: 100%;
     height: 100%;
+    background: linear-gradient(to bottom, #74b6f8 0%,#cee5fe 100%);
+}
 
-}
-.overlay{
-    width: 50%;
-    height: 100%;
-    background-color: #6797de;
-    opacity: 0.1;
-}
 .content-01 .text-warp{
+    
     position: absolute;
     left: 50%;
     top: 50%;
@@ -93,6 +91,7 @@ body{
     padding: 0;
 }
 .content-01 .text-warp h1{
+    
     margin: 0;
     padding: 0;
     font-size: 54px;
@@ -128,6 +127,8 @@ body{
     bottom: 120px;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
+    BOX-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;
+    
 }
 .content-01 .mouse .arrow{
     height: 20px;
@@ -177,8 +178,17 @@ body{
     }
     
 }
+@keyframes fadein{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
 
 .content-02{
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;
     width: 100%;
     height: 1400px;
 background-color:  #c7d7ef;
@@ -189,7 +199,7 @@ background-color:  #c7d7ef;
     font-size: 50px;
     font-weight: 600;
     color: white;
-    text-decoration: underline;
+    
 }
 .about1{
     position: relative;
@@ -204,7 +214,24 @@ background-color:  #c7d7ef;
     background-color: white;
     opacity: 0.5;
     border-radius: 20px;
-    transform: translate(0,30px);
+    transform: translate(100px,30px);
+}
+.content-box2{
+    display: flex;
+    justify-content: space-evenly;
+    width: 700px;
+    height: 300px;
+    background-color: white;
+    border-radius: 20px;
+    left: 70px;
+    transform: translate(0,70px);
+    BOX-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;
+    opacity: 0;
+}
+
+.content-box2.isActive{
+ animation: fadein 2s;
+ animation-fill-mode: forwards;
 }
 .pic{
     display: flex;
@@ -217,6 +244,7 @@ background-color:  #c7d7ef;
     font-size: 40px;
     color: white;
     transform: translate(100px,40px);
+   
 }
 .bar{
     position: absolute;
@@ -268,16 +296,25 @@ background-color:  #c7d7ef;
     cursor: pointer;
 }
 .project{
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     position: relative;
     display: flex;
     justify-content: space-around;
     width: auto;
-    height: 1500px;
+    height: 1200px;
     background-color: #d2e4ff;
     font-size: 40px;
     color: white;
     font-weight:600;
     font-size: 40px;
+    
+}
+.pro-icon{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: absolute;
+
 }
 .project h2{
     position: absolute;
@@ -285,12 +322,21 @@ background-color:  #c7d7ef;
     left: 50%;
     transform: translate(-50%);
 }
+.pro-text{
+    color: #000000;
+    
+}
+.pro-img{
+    position: absolute;
+    top: 2%;
+    left: 100%;
+}
 
 .contact{
     position: relative;
     justify-content: space-around;
     width: auto;
-    height: 700px;
+    height: 800px;
     background-color: #b2cef9;
     font-size: 40px;
     color: white;
@@ -299,12 +345,14 @@ background-color:  #c7d7ef;
     position: relative;
 }
 .contact-main{
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     display: flex;
     justify-content: space-evenly;
-    top: 10px;
+    transform: translateY(130px);
 
 }
 .contact-text{
+    text-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;
     text-align: center;
     font-weight:600;
     font-size: 50px;
@@ -313,8 +361,6 @@ background-color:  #c7d7ef;
 .context-sub{
     text-align: center;
     font-size: 30px;
-
-    
 }
 
 .contact-box{
@@ -324,6 +370,8 @@ background-color:  #c7d7ef;
     border-radius: 20%;
     top: 30%;
     left: 35%;
+    BOX-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;
+
     
 }
 .contact-icon{
@@ -354,13 +402,13 @@ background-color:  #c7d7ef;
    color: black;
 }
 .swiper-wrap{
-    width: 900px;
+    width: 1200px;
     height: max-content;
     position: relative;
     margin: auto;
 }
 .swiper{
-    width: 900px;
+    width: 1200px;
     height: 900px;
     position: relative;
     margin: auto;
@@ -370,7 +418,7 @@ background-color:  #c7d7ef;
     width: max-content;
     position: absolute;
     top: 0;
-    left: -900px;
+    left: -1200px;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -381,14 +429,14 @@ background-color:  #c7d7ef;
    
 }
 .swiper-item{
-    width: 900px;
+    width: 1200px;
     height: 100%;
-    border: 1px solid;
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
-     pointer-events: none;
+    pointer-events: none;
+    background-color: white;
+    color: #000000;
+    
 }
 .prev, .next{
     /* 부모보다 앞으로 */
@@ -398,8 +446,8 @@ background-color:  #c7d7ef;
     top : 50%;
     transform: translate(-50%);
     width: 50px;
-    border: 1px solid;
     cursor: pointer;
+    color: #6797de;
 }
 .prev{
     left: 26px;
@@ -408,3 +456,52 @@ background-color:  #c7d7ef;
 .next{
     right: -28px;
 }
+
+.date{
+    transform: translateY(-15px);
+    height: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+.box{
+    transform: translate(20px,20px);
+    color: #555555;
+}
+.box p{
+    display: flex;
+    font-size: 30px;
+    transform: translate(80px,10px);  
+    color: #567db9;
+}
+.box span{
+font-size: 30px;
+}
+.text-dark{
+    font-size: 30px;
+    color: #567db9;
+}
+.box-sub{
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    width: 600px;
+    transform: translateX(7px)
+}
+.milky {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    text-transform: uppercase;
+    display: block;
+    font-size: 60px;
+    color: #ffffff;
+    text-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;
+    font-weight: bold;
+    letter-spacing: -4px;
+    text-align: center;
+    position: absolute;
+    padding: 0px 0px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 20px;
+  }

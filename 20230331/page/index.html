@@ -12,29 +12,24 @@
 <body>
     <div class="header">
         <ul>
-            <a href="#home"></a>
-            <li>Home</li>
-            <li>About</li>
-            <li>Projects</li>
-            <li>Contact</li>
+            <a href="#home" style="text-decoration: none; color: black;"><li> Home</li></a>
+            <a href ="#about" style="text-decoration: none;color: black;"><li>About</li></a>
+            <a href="#projects" style="text-decoration: none;color: black;"><li>Projects</li></a>
+            <a href="#contact" style="text-decoration: none;color: black;"><li>Contact</li></a>
         </ul>
     </div>
     <div class="main">
-        <div class="content-01">
-            <div class="overlay"></div>
-            <div class="text-warp">
-                <p> HELLO, MY NAME IS</p>
-                <h1>고연수(yeons_yeon)</h1>
-                <h2>im a <span> Blockchain Developer</span></h2>
-            </div>
+        <div class="content-01" id="home">
+            <div class="milky">Blockchain Developer</div>
+            <div class="milky" style="top: 35%;">yeon su</div>
             <div class="mouse">
                 <a href=""></a>
                 <div class="arrow"></div>
             </div>
         </div>
-        <div class="content-02">
+        <div class="content-02" id="about"> 
             <div class="text-warp2">
-                <p>ABOUT ME</p>
+                <p style="text-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;">ABOUT ME</p>
                 <div class="about1">
                     <div class="pic"><img src="./KakaoTalk_20230403_104335327.png" alt=""></div>
                     <div class="content-box">
@@ -45,7 +40,7 @@
                         </li>
                         <li style="display: flex;">
                         <span class="about-text">Blog: </span>
-                        <span class="about-text-sub" style="color: #6797de;;">https://www.notion.so</span>
+                        <span class="about-text-sub" style="color: #6797de;;"><a style="text-decoration: none; color: #6797de;" href="https://www.notion.so">https://www.notion.so</a></span>
                         </li>
                         <li style="display: flex;">
                         <span class="about-text">Email: </span>
@@ -60,7 +55,7 @@
                 </div>
                 <div>
                 <div style="display: flex;">
-                <h2 class="about2">My Skill <span class="bar"></span></h2>
+                <h2 class="about2"> My Skill <span class="bar"></span></h2>
                 </div>
                 <div class="sub">
                 <div class="sub-content">HTML</div>
@@ -71,27 +66,95 @@
                 <div style="display: flex;">
                     <h2 class="about2">Education <span class="bar"></span></h2>
                 </div>
+                <div style="display: flex; justify-content: space-evenly;">
+                <div class="content-box2"></div>
+                <div class="content-box2"></div>
+                <div class="content-box2"></div>
+            </div>
             </div>
         </div>
-        <div class="project">
-            <h2>PROJECTS</h2>
+        <div class="project" id="projects">
+            <h2 style="text-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;">PROJECTS</h2>
             <div class="swiper-wrap">
                 <div class="swiper">
                 <span class="prev">◀️</span>
                 <span class="next">▶️</span>
                 <ul class="swiper-content">
                     <li class="swiper-item">4</li>
-                    <li class="swiper-item">1</li>
-                    <li class="swiper-item">2</li>
-                    <li class="swiper-item">3</li>
-                    <li class="swiper-item">4</li>
-                    <li class="swiper-item">1</li>
+                    <li class="swiper-item">
+                    <div class="pro-icon">
+                        <img width="100px" src="./다운로드 (1).png" alt="">
+                        <div class="date">2023.03</div>
+                    </div>
+                    <div class="box">
+                        <p>로그인 페이지와 게임 인벤토리 제작</p>
+                        <div class="pro-text"><span>경일게임아카데미</span>
+                            <h3 style="font-size: 25px; width: 600px;">팀으로 작업해보는 첫 프로젝트로 로그인과 게시판 기능이 구현되어있는 웹페이지를 제작하였습니다.</h3>
+                        </div>
+                    <div style="display: flex;">
+                        <div class="text-dark">기술스택 : </div>
+                        <div class="box-sub"> HTML, CSS, Node.js</div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="text-dark">주요 기능 :  </div>
+                        <div class="box-sub"> 로그인, 인벤토리 기능을 포함한 웹페이지</div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="text-dark">담당역할 : </div>
+                        <div class="box-sub"> 팀원</div>
+                    </div >
+                        <div style="display:flex;">
+                            <img class="pro-img" width="350px" src="./스크린샷 2023-04-04 113548.png" alt=""></div>
+                    </div> 
+                    </li>
+                    <li class="swiper-item">
+                        <div class="pro-icon">
+                            <img width="100px" src="./다운로드 (1).png" alt="">
+                            <div class="date">2023.03</div>
+                        </div>
+                    </li>
+                    <li class="swiper-item">
+                        <div class="pro-icon">
+                            <img width="100px" src="./다운로드 (1).png" alt="">
+                            <div class="date">2023.03</div>
+                        </div>
+                    </li>
+                    <li class="swiper-item">
+                        <div class="pro-icon">
+                            <img width="100px" src="./다운로드 (1).png" alt="">
+                            <div class="date">2023.03</div>
+                        </div>
+                    </li>
+                    <li class="swiper-item"><div class="pro-icon">
+                        <img width="100px" src="./다운로드 (1).png" alt="">
+                        <div class="date">2023.03</div>
+                    </div>
+                    <div class="box">
+                        <p>로그인 페이지와 게임 인벤토리 제작</p>
+                        <div class="pro-text"><span>경일게임아카데미</span>
+                            <h3 style="font-size: 25px; width: 600px;">팀으로 작업해보는 첫 프로젝트로 로그인과 게시판 기능이 구현되어있는 웹페이지를 제작하였습니다.</h3>
+                        </div>
+                    <div style="display: flex;">
+                        <div class="text-dark">기술스택 : </div>
+                        <div class="box-sub"> HTML, CSS, Node.js</div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="text-dark">주요 기능 :  </div>
+                        <div class="box-sub"> 로그인, 인벤토리 기능을 포함한 웹페이지</div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="text-dark">담당역할 :</div>
+                        <div class="box-sub"> 팀원</div>
+                    </div >
+                        <div style="display:flex;">
+                            <img class="pro-img" width="350px" src="./스크린샷 2023-04-04 113548.png" alt=""></div>
+                    </div> </li>
                 </ul>
             </div>
         </div>
         </div>
         
-        <div class="contact">
+        <div class="contact" id="contact">
         <h2 class="contact-text">Contact</h2>
         <p class="context-sub">연락 부탁 드립니다</p>
         <div class="contact-main">

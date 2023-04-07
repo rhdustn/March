@@ -57,7 +57,7 @@ function render(){
     // += 원래 있는 값에 추가를 시켜준다. 덧붙인다
     // += 5
     objArr.forEach(function(i){
-        text +=`<li> 이름은 : ${i.name} 나이 :  ${i.age} 내용 :  ${i.content}</li>`
+        text +=`<li> 이름 : ${i.name} 나이 :  ${i.age} 내용 :  ${i.content}</li>`
     });
     console.log(text);
     // 여기서 사용하고 끝낼꺼 text 지역변수

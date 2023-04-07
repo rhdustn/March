@@ -1,0 +1,25 @@
+body {
+    background: linear-gradient(to bottom, #74b6f8 0%,#cee5fe 100%);
+  }
+  .milky {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;
+    text-transform: uppercase;
+    display: block;
+    font-size: 50px;
+    color: #ffffff;
+    text-shadow: 0 8px 9px #a59a86, 0px -2px 1px #fff;
+    font-weight: bold;
+    letter-spacing: -4px;
+    text-align: center;
+    background: linear-gradient(to bottom, #cee5fe 0%,#cee5fe 100%);
+    position: absolute;
+    padding: 100px 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 20px;
+  }
+  
+  body,html {
+    height: 100%;
+  } 

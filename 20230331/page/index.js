@@ -1,15 +1,21 @@
 
-console.log(document.querySelector('.text-warp h2').getBoundingClientRect().top +window.pageYOffset);
-let posY= document.querySelector('.text-warp h2').getBoundingClientRect().top +window.pageYOffset;
 window.onscroll = function(){
+let posY= document.querySelector('.milky').getBoundingClientRect().top ;
     console.log('스크롤 됨')
-    console.log(window,scrollY);
-    if(posY <window,scrollY ){
+    console.log(posY);
+    if(posY <0 ){
         document.querySelector('.header').classList.add("isActive");
     }else{
-        document.querySelector('.header').classList.re("isActive")
+        document.querySelector('.header').classList.remove("isActive");
+    }
+    let eduY = document.querySelector('.pic').getBoundingClientRect().top;
+    if( eduY <0){
+        document.querySelectorAll('.content-box2')[0].classList.add("isActive")
+        document.querySelectorAll('.content-box2')[1].classList.add("isActive")
+        document.querySelectorAll('.content-box2')[2].classList.add("isActive")
     }
 }
+
 
 let _start;
 // 진행중인 인덱스
@@ -47,7 +53,7 @@ _swiper.addEventListener("mouseup", function (e) {
         if (_index == 5) {
             setTimeout(function () {
                 _swiperContent.style.transition = '0s';
-                _swiperContent.style.left = '-900px';
+                _swiperContent.style.left = '-1200px';
                 _index =1;
                 
             }, 1000);
@@ -66,7 +72,7 @@ _swiper.addEventListener("mouseup", function (e) {
         if (_index == 0) {
             setTimeout(function () {
                 _swiperContent.style.transition = '0s';
-                _swiperContent.style.left = '-3600px';
+                _swiperContent.style.left = '-4800px';
                 _index =4;
                 
             }, 1000);
@@ -92,7 +98,7 @@ _prev.addEventListener('click', function () {
     if (_index == 0) {
         setTimeout(function () {
             _swiperContent.style.transition = '0s';
-            _swiperContent.style.left = '-3600px';
+            _swiperContent.style.left = '-4800px';
             _index =4;
             
         }, 1000);
@@ -111,7 +117,7 @@ _next.addEventListener('click', function () {
     if (_index == 5) {
         setTimeout(function () {
             _swiperContent.style.transition = '0s';
-            _swiperContent.style.left = '-900px';
+            _swiperContent.style.left = '-1200px';
             _index =1;
             
         }, 1000);
