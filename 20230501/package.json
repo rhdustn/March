@@ -1,0 +1,21 @@
+{
+  "name": "gg",
+  "version": "1.0.0",
+  "description": "hello",
+  "main": "main.js",
+  "scripts": {
+    "test": "fnkfdnkfnd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "dnkfnsfldn"
+  },
+  "keywords": [
+    "nfkndefk"
+  ],
+  "author": "nfdknfd",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^3.2.4"
+  }
+}
