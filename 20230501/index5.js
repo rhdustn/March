@@ -49,11 +49,11 @@ const temp = mysql.createConnection({
     database : "test8",
 });
 
-// temp에 연결한 mysql객체를 반환
-// 이 객체안에는 쿼리문 작성해서 데이터베이스 쿼리 작업을 
-//query 메서드 : 쿼리문을 매개변수로 전달해서 데이터 베이스의 쿼리작업을 시킬 수 있다
-// 테이블이 있는지 확인
-// "SELECT * FROM products" : 
+// // temp에 연결한 mysql객체를 반환
+// // 이 객체안에는 쿼리문 작성해서 데이터베이스 쿼리 작업을 
+// //query 메서드 : 쿼리문을 매개변수로 전달해서 데이터 베이스의 쿼리작업을 시킬 수 있다
+// // 테이블이 있는지 확인
+// // "SELECT * FROM products" : 
 temp.query("SELECT * FROM products",(err,res)=>{
     if(err){
         // 테이블이 없다는 뜻
@@ -70,5 +70,28 @@ temp.query("SELECT * FROM products",(err,res)=>{
     }else{
         console.log(res)
         console.log("테이블이 있음")
+    }
+})
+const temp2 = mysql.createConnection({
+    user : "root",
+    password : "kyoung2116!",
+    database : "test9",
+});
+temp2.query("SELECT * FROM products",(err,res)=>{
+    if(err){
+        // 테이블이 없다는 뜻
+        console.log("temp2테이블이 없음")
+        const sql = "CREATE TABLE products(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20), number VARCHAR(20), series VARCHAR(20))"
+        // 쿼리문의 내용
+        //  products이름의 테이블을 만드는데
+        // id 컬럼은 INT숫자형
+        // AUTO_INCREMENT : 자동으로 값이 증가할 수 있도록 설정 PRIMARY KEY에 주로 사용한다.
+        // PRIMARY KEY : 테이블에는 고유한 값을 가지고있는 컬럼 하나 무조건 필요한데 고유한 값을 설정하는데 PRIMARY KEY로 설정한다
+        // name, number, series 이런 컬럼에는 VARCHAR 문자열이고 괄호에 글자 수를 정해줄 수 있다 20자 까지 허용시켜 놓았음
+        temp2.query(sql);
+        console.log("temp2테이블이 없어서 만들었어")
+    }else{
+        console.log(res)
+        console.log("temp2테이블이 있음")
     }
 })

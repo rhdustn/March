@@ -16,17 +16,17 @@ console.log(folder);
 // 콜백함수 첫번째 매개변수로 네러의 내용의 객체를 전달받는다
 if(!folder){
 // 비동기적으로 실행되는 메소드
-fs.mkdir("./Test",(err)=>{
-    if(err){
-        console.log(err)
-        console.log("에러남")
-    }else{
-        console.log("Test 폴더 잘 만들어짐")
-    }
-})
+// fs.mkdir("./Test",(err)=>{
+//     if(err){
+//         console.log(err)
+//         console.log("에러남")
+//     }else{
+//         console.log("Test 폴더 잘 만들어짐")
+//     }
+// })
 // 동기적으로 실행되는 메소드
-// fs.mkdirSync("./Test")
-// console.log("Test 폴더 만들어짐")
+fs.mkdirSync("./Test")
+console.log("Test 폴더 만들어짐")
 }
 
 // 폴더는 만들었고 폴더 안에 파일을 만들어 보자
@@ -35,16 +35,16 @@ fs.mkdir("./Test",(err)=>{
 // 두번째 매개변수 파일에 작성할 내용
 // 세번째 매개변수 콜백함수
 // 콜백함수의 매개변수는 에러 내용의 객체를 전달받는다
-// fs.writeFile("./Test/temp.txt","Hello nodejs",(err)=>{
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log("파일 잘 만들어짐")
-//     }
-// })
+fs.writeFile("./Test/temp.txt","Hello nodejs",(err)=>{
+    if(err){
+        console.log(err)
+    }else{
+        console.log("파일 잘 만들어짐")
+    }
+})
 // 동기적으로 실행되는 메서드
-fs.writeFileSync("./Test/temp.txt","Hello nodejs")
-console.log("파일 잘 만들어짐");
+// fs.writeFileSync("./Test/temp.txt","Hello nodejs")
+// console.log("파일 잘 만들어짐");
 
 // 폴더도 만들고 파일도 만들고 파일의 내용도 작성해 봤으니까.
 // readFile : 파일을 읽어온다
@@ -55,18 +55,18 @@ console.log("파일 잘 만들어짐");
 // 세번째 매개변수 콜백함수
 // 콜백함수의 첫번째 매개변수는 에러의 내용 객체
 // 두번째 매개변수는 읽어온 파일의 내용
-// fs.readFile("./Test/temp.txt","utf-8",(err,data)=>{
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log(data)
-//     }
-// })
+fs.readFile("./Test/temp.txt","utf-8",(err,data)=>{
+    if(err){
+        console.log(err)
+    }else{
+        console.log(data)
+    }
+})
 // 동기적으로 파일을 읽어오는 메서드
 // 메서드의 반환값으로 파일을 읽어온 data가 나옴
-let data = fs.readFileSync("./Test/temp.txt","utf-8")
-// 여기에 동작이 끝날때 까지 기다린다.
-console.log(data);
+// let data = fs.readFileSync("./Test/temp.txt","utf-8")
+// // 여기에 동작이 끝날때 까지 기다린다.
+// console.log(data);
 
 // 폴더를 제거
 // rm 메서드
