@@ -38,6 +38,7 @@ app.set("views",path.join(__dirname,"page"))
 app.set("view engine","ejs");
 // express 에서 bodyParser를 지원한다
 app.use(express.urlencoded({extended : false}));
+
 app.get('/',(req,res)=>{
     // render 메서드 view 엔진이 문자열을 html 로 브라우저에 ㅜ전달
     // 첫번쨰 매개변수: 파일의 이름

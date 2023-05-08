@@ -29,6 +29,7 @@ fs.mkdirSync("./Test")
 console.log("Test 폴더 만들어짐")
 }
 
+
 // 폴더는 만들었고 폴더 안에 파일을 만들어 보자
 // writeFile: 파일 쓰기 파일에 데이터를 작성할 수 있다
 // 첫번째 매개변수 파일의 이름 경로
@@ -42,6 +43,7 @@ fs.writeFile("./Test/temp.txt","Hello nodejs",(err)=>{
         console.log("파일 잘 만들어짐")
     }
 })
+
 // 동기적으로 실행되는 메서드
 // fs.writeFileSync("./Test/temp.txt","Hello nodejs")
 // console.log("파일 잘 만들어짐");

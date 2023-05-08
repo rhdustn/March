@@ -1,5 +1,5 @@
 // mysql설치
-//workbench 편하게 gui로 조작해거 추가가 가능하다
+//workbench 편하게 git로 조작해거 추가가 가능하다
 
 //cli 좀 작성을 해보고 넘어간다
 

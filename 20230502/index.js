@@ -57,3 +57,7 @@ app.listen(5000,()=>{
 // start 명령어는 ===npm start
 // 별도의 네이밍으로 우리가 작성한 스크립트 명렁어 실행
 // 예) dev가정하면 npm run dev 이렇게 실행하면 된다
+function solution(myString) {
+    var answer = answer=myString.toUpperCase(); 
+    return answer;
+}

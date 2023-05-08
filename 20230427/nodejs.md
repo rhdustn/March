@@ -1,7 +1,7 @@
 # Nodejs란?
 
 ## nodejs란 서버?
-- nodejs wk체가 웹서버가 아니고 <br> 
+- nodejs 자체가 웹서버가 아니고 <br> 
 nodejs 응 js 를 사용해서 서버측의 코드를<br> 
  작성하고 서버를 구축할수 있게 도와주고 <br> 
  생산성을 위해 npm을 통해 모듈을 제공한다 

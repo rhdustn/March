@@ -23,6 +23,7 @@
 // global.console.timeEnd()// 코드 종료후 시간 출력 해당 끝낼 테스트 이름을 
 
 global.console.table({a :{name : "안녕"},b :{name : "안녕2"},c :{name : "안녕3"},})
+global.console.table({1 :{name : "hi"},2 :{name : "hi"},3 :{name : "hi3"},})
 
 // 실행시키면 실행 파일의 이름을 보여주는 메소드
 console.log(__filename);

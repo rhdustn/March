@@ -123,7 +123,7 @@ app.post('/insert',(req,res)=>{
     // value의 순서대로
     _mysql.query(sql,[data.name,data.number,data.series],()=>{
         // redirect 메서드로 전달한 url 로 페이지를 전환시킨다
-        // 경로를 이동시킨다
+        // 경로를 이동시킨다c
         res.redirect("/");
     });
 
@@ -143,5 +143,5 @@ app.get("/delete/:id",(req,res)=>{
 
 
 app.listen(8080,()=>{
-    console.log("서버 열림~");
+    console.log("server open!");
 })

@@ -7,6 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>TODO - LIST</h2>
+    <h2>TO-DO LIST</h2>
+    <a href="/add">추가하기</a>
+       <table>
+        <tr>
+            <td>기한</td>
+            <td>해야할 일</td>
+            <td>메모</td>
+            <td>수정</td>
+            <td>삭제</td>
+        </tr>
+        <% if(data){ %>
+
+            <% data.forEach((el,index) => { %>
+                <tr><th><%= el.id %></th>
+                    <th><%= el.date %></th>
+                    <th><%= el.work %></th>
+                    <th><%= el.memo %></th>
+                    <th><a href="/delete/<%= el.id %>">삭제</a></th>
+                    <th><a href="/edit/<%= el.id %>">수정</a></th>
+                </tr>
+            <% }); %>
+        
+        <% }else{ %>
+        <% } %>
+       </table>
 </body>
 </html>
