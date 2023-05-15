@@ -50,7 +50,7 @@ const server = http.createServer((req,res)=>{
     res.setHeader("Content-Type", "application/json", "charset=utf-8")
     // Content-Type : 응답의 내용
     // application/json : 응답의 내용을 JSON 현식의 데이터로 전송
-    // charset=utf-8 : 응답의 문자를 인코딩 utf-8로 설정
+    // charset=utf-8 : 응답의 문자를 인코딩 utf-8로 설정ss
     
     // 요청한 URL은 뭐지
     const URL = req.url;
