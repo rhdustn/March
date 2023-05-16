@@ -9,7 +9,7 @@ exports.UserList = async (req,res)=>{
     }
 }
 
-// 회원가입s
+// 회원가입
 exports.SignUp = async (req,res)=>{
     const {user_id,user_pw}=req.body;
     try {
@@ -56,7 +56,7 @@ exports.LogIn = async (req,res)=>{
 }
 
 // 유저 토큰 검증
-exports.verifyLogin = async (req,res,next)=>{
+exports.verifyLogin = async (req,res,next)=>{ 
     // next 함수를 실행시켜주면 다음 미들웨어로 이동
     // res.send("여기서 끝")
     const {access_token,refresh_token}=req.session
