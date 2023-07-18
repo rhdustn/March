@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react2</title>
+    <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <!-- React, RreactDOM 라이브러리 -->
+  <!-- Babel을 가져와서 jsx 문법을 사용 -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    class Clock extends React.Component {
+        constructor(props){
+            super(props);
+            this.state ={
+                Time : new Date().toLocaleTimeString()
+            }
+        }
+        // update(){
+        //     setState({})
+        //     // 아직 변경전 상태가 찍힘
+        //     console.log(this.state)
+        // }
+        // react 생명 주기
+        // 생명주기
+        // 화면이 그려지는 시기와 state 값이 변했을때 동작해야하는 작업이 있을경우
+        // 이런 부분을 제어할 수 있게 리액트에서 만들어준 lifecycle 함수이다(생명주기)
+
+        componentDidMount(){
+            // 여기 내용이 컴포넌트가 생성되면 호출됨 딱 최초에 한번
+            setInterval(()=>{
+                this.setState({Time : new Date().toLocaleTimeString()})
+            },1000)
+            console.log("최초에 한번 실행됨")
+        }
+        componentDidUpdate(){
+            console.log("state 업데이트됨")
+        }
+        render(){
+            return(
+                <>
+                <h1>안녕 내 컴퓨터 시간</h1>
+                <h2>time : {this.state.Time}</h2>
+                </>
+            )
+        }
+
+    }
+    const root =ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<Clock />)
+</script>
+</html>

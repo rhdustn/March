@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .img-box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h2>main page</h2>
+    <div>
+        <span>name : </span>
+        <span id="name1"></span>
+    </div>
+    <div> 
+        <img id="img2" class="img-box" alt="">
+    </div>
+   
+    <input type="text" id="imgs">
+    <input type="file" id="file">
+    <button id="uploadBtn">전송</button>
+</body>
+<script>
+    async function getAPI() {
+      try {
+        const {data} = await axios.get(
+          "http://127.0.0.1:8000/login/view",
+          // 브라우저가 쿠키를 서버로 전달 할 수 있는 옵션
+          { withCredentials: true }
+        );
+        console.log(data)
+        // 스트링 형식에 데이터를 넣는 법${}
+            img2.src=`http://localhost:8000/img/${data.img}`
+        
+        name1.innerHTML=data.name
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    
+    getAPI();
+    uploadBtn.onclick = () => {
+        
+        // new FormData : form 데이터를 동적으로 생성
+        const form = new FormData();
+        form.append('imgs', imgs.value);
+        // input의 파일 내용을 어떻게 가져오나
+        console.log(file.files[0]);  // input에 들어있는 파일 내용을 확인할 수 있다
+
+        form.append('upload', file.files[0]); // file은 input 태그에 담긴 file의 내용
+        axios.post('http://127.0.0.1:8000/upload', form, {
+        withCredentials:true,
+            'Content-Type': 'multipart/form-data'
+        }).then((e) => {
+            console.log('잘 전달됨');
+            console.log(e);
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+</script>
+</html>

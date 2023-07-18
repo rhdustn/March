@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        body {
+            position: relative;
+            height: 100vh;
+        }
+        .content{
+            position: absolute;
+            /* 무조건 가운데로 */
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 650px;
+            height: 500px;
+            border: 1px solid;
+        }
+        #send{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border: 1px solid;
+            box-sizing: border-box;
+            display: flex;
+        }
+        #send #msg{
+            border: 0;
+            box-sizing: border-box;
+            padding: 10px;
+            width: 85%;
+        }
+        #send #sendBtn{
+            background-color: pink;
+            border: none;
+            box-sizing: border-box;
+            padding: 10px;
+            width: 15%;
+        }
+        #message{
+            margin: 0;
+            padding: 0;
+        }
+
+        #message li {
+            list-style: none;
+        }
+        #login{
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items:center ;
+            justify-content: center;
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .join_text{
+            background-color: gray;
+        }
+        .leave_text{
+            background-color: rgb(133, 160, 255);
+            border: 1px solid rgb(133, 160, 255);;
+        }
+        #main{
+            width: 525px;
+            display: none;
+        }
+        #conBox{
+            width: 125px;
+            height: 459px;
+            border: 1px solid;
+            right: 0%;
+            display: none;
+            position: absolute;
+            right: 0%;
+            top: 0%;
+            text-align: center;
+        }
+        #list{
+            margin: 0;
+            padding: 0;
+        }
+
+        #list li {
+            list-style: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div>귀여운 동물 카톡</div>
+        <div id="login">
+            <p>로그인</p>
+            <input type="text" id="username">
+            <button id="loginBtn">접속</button>
+        </div>
+        <div id="main">
+            <select name="" id="rooms">
+                <option value="고양이 방">고양이 방</option>
+                <option value="강아지 방">강아지 방</option>
+            </select>
+            <ul id="message">
+            </ul>
+            <div id="send">
+                <input type="text" id="msg">
+                <button id="sendBtn">보내기</button>
+            </div>
+            <div id="send2">
+                <input type="text" id="msg2">
+                <button id="sendBtn2">귓속말</button>
+            </div>
+            <div id="conBox">
+                <ul id="list">
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    
+    window.onload = () =>{
+        loginBtn.onclick = ()=>{
+            login.style.display = "none";
+            main.style.display = "block";
+            conBox.style.display = "block";
+            const name = username.value;
+            // 옵션들을 배열
+            console.log(rooms.options)
+            console.log(rooms.selectedIndex)
+            // 선택한 인덱스의 옵션 value 값
+            let room =rooms.options[rooms.selectedIndex].value
+            // 연결시도
+            const socket = io.connect();
+            socket.emit("joinRoom",room,name)
+            socket.emit("content2",room,name)
+
+            rooms.onchange = function(e){
+                // 이벤트가 일어난 테그
+                let el = e.target
+                console.log(el.selectedIndex)
+                // 해당 유저가 room에서 떠남
+                socket.emit("leaveRoom",room,name)
+                room = rooms.options[el.selectedIndex].value;
+                socket.emit("joinRoom",room,name)
+            }
+
+            socket.on("joinRoom",(room,name)=>{
+                console.log("접속함?")
+                message.innerHTML +=`
+                <li class="join_text">
+                    ${name}님이 ${room}에 들어왔음
+                </li>
+                `;
+            })
+            socket.on("chat",(name,msg)=>{
+                message.innerHTML +=`
+                <li>
+                    ${name}:${msg}
+                </li>
+                `;
+            })
+
+            socket.on("leaveRoom",(room,name)=>{
+                message.innerHTML += `
+                <li class="leave_text">
+                    ${name}님이 ${room}에서 나갔습니다
+                </li>  
+                `
+            })
+            socket.on("content2",(room,userName)=>{
+
+                list.innerHTML =""
+                userName.forEach((el) => {   
+                    list.innerHTML += `
+                    <li id=${el.name}>
+                        ${el.name} 참여
+                    </li>
+                    `
+                    console.log('ddd')
+               
+                });
+                userName.forEach((el)=>{
+                    document.querySelector(`#${el.name}`).addEventListener('click',()=>{
+                    console.log('들어옴')
+                    msg2.value = el.id 
+                } )
+                })
+            })
+
+            sendBtn.onclick = function(){
+                console.log("눌림")
+                socket.emit("chat", room,name,msg.value)
+                msg.value =""
+            }
+            sendBtn2.onclick =()=>{
+                socket.emit("chat2",msg2.value,name,msg.value)
+                msg.value =""
+            }
+            // 리스트에 있는 유저를 눌렀을 때 msg2 의 value를 눌린 유저의 id로 바꾸자.
+          
+        }
+    }
+</script>
+</html>

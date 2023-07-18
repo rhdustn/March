@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>작성자 : <%= data.name %></h3>
+    <ul>
+        <%  data.Boards.forEach((board)=> {%>
+            <li>
+            <p>제목 : <%= board.title %></p>
+            <p>내용 : <%= board.content %></p>
+             <form action="/board/view_update/<%= board.id %>" method="post">
+                <label for="">제목</label>
+                <input type="text" name="title"><br>
+                <label for="">내용</label>
+                <input type="text" name="content"><br>
+                <button>수정</button><br>
+             </form>
+             <a href="/board/del/<%= board.id%>">삭제하기</a>
+        </li>
+        <% });%>
+    </ul>
+    <a href="/board/allboard">전체글 목록페이지</a>
+</body>
+
+</html>

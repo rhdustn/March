@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<style>
+    .mypage-post-container {
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+</style>
+<body>
+    <div class="mypage-post-container"></div>
+
+    <div class="change-me-container">
+      <form action="http://127.0.0.1:8080/mypage/" method="post">
+        <label for="">닉네임 변경</label>
+        <input type="text" name="name" />
+        <button>바꾸기</button>
+      </form>
+      <form action="http://127.0.0.1:8080/mypage/"  method="post">
+        <label for="">아이디 변경</label>
+        <input type="text" name="user_id" />
+        <button>바꾸기</button>
+      </form>
+    </div>
+  </body>
+<script>
+    const getAllUserPost = async () => {
+      const { data } = await axios.get("http://127.0.0.1:8080/mypage", {
+        withCredentials: true,
+      });
+      return data;
+    };
+    const renderPage = async () => {
+      const postData = await getAllUserPost();
+      console.log(postData)
+      postData.forEach((el) => {
+        document.querySelector(
+          ".mypage-post-container"
+        ).innerHTML += `<div class='post'> 
+        <div class='title'>title:${el.title} </div>
+         <div class='writer'>writer:${el.writer}</div> 
+         <div class='content'>content:${el.content}</div>
+         <a href='http://127.0.0.1:8080/posts/update/${el.id}'> 글 수정 </a>
+         <a href='http://127.0.0.1:8080/posts/del/${el.id}'> 글 삭제 </a>
+          </div>`;
+      });
+    };
+
+    renderPage();
+</script>
+</html>

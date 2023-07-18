@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>my-page</h2>
+    작성자 : <%= data.name %>
+    <a href="/board/view/<%= data.id %>">등록글 보러 가기</a>
+    <form action="/board/create_board" method="post">                                                                                                                                                                                                                                                                                                                                           
+    <label for="">제목</label>
+    <input type="text" name="title"><br>
+    <br>
+    <label for="">내용</label>
+    <input style=" height: 100px;" type="text" name="content"><br>
+    <br>
+    <button>글 등록하기</button>
+    </form>
+    <a href="/board/allboard">전체글 목록페이지</a>
+</body>
+</html>

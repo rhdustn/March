@@ -10,6 +10,7 @@
  const jwt = require("jsonwebtoken")
  const app = express() 
  const mysql = require("mysql2")
+ 
 
  const joinRouter = require("./routers/joinRouter")
  const loginRouter = require("./routers/loginRouter")

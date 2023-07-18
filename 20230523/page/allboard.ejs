@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>글 목록</h2>
+      <form action="/allboard" method="post">
+    <ul>
+         <% data.forEach((board)=> {%>
+        <li>
+            <p>작성자 : <%= board.User.dataValues.name %></p>
+            <p>제목 : <a href="/board/detail/<%= board.id%>"><%= board.title %></a></p>
+            <!-- <p>내용 : <%= board.content %></p> -->
+        </li>
+        <% });%>
+    </ul>
+</form>
+</body>
+</html>

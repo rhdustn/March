@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    // react의 UI의 기본단위 컴포넌트
+    // 컴포넌트는 자주 사용할꺼 같은 ui요소의 기본단위
+
+    // 컴포넌트는 상태와 속성을 가지고 있다
+    // react 단방향성 데이터의 흐름
+    // 부모에서 자식으로 값을 전달해줄 수 있다
+    // class
+    // 컴포넌트 클래스
+    // Component 모양을 만들거고 상속받아서 사용할거임
+    class Component {
+        target;
+        state;// 상태값 컴포넌트의 유지되는 데이터
+
+        constructor(target){
+            // 컴포넌트의 target을 설정
+            this.target = target
+            this.setup();
+            this.render();
+            console.log("나는 최초의 render 됨")
+        }
+        setup(){
+            // 컴포넌트를 초기설정 랜더링 하기전에 동작하는 함수.
+            console.log("컴포넌트 초기 세팅");
+        }
+        template(){
+            // 컴포넌트 html 템플릿을 반환해줄거임.
+            return "";
+        }
+        render(){
+            // 컴포넌트를 타겟 요소에 랜더링
+            this.target.innerHTML = this.template();
+            this.setEvent();
+        }
+        setEvent() {
+            // 컴포넌트 이벤트 세팅
+            console.log("컴포넌트 이벤트 세팅");
+        }
+        setState(_state){
+            // 컴포넌트의 상태를 업데이트
+            // 업데이트 되면 리랜더링
+            this.state={...this.state,..._state};
+            this.render();
+            console.log("나 상태 바뀜")
+        }
+    }
+    // 가상 dom클래스 정의
+    // 렌더링 시킬거임
+    class VirtualDOM {
+        constructor(component,target) {
+            // 매개변수로 전달받은 컴포넌트 생성후 타켓 요소에 전달
+            // 컴포넌트 클래스 생성자 함수의 매개변수로 타겟 전달
+            this.Component = new component(target);
+        }
+        render(){
+            // 컴포넌트 랜더링
+            this.Component.template();
+        }
+    }
+    // App class 컴포넌트 상속 받아서 정의
+    class App extends Component{
+        setup() {
+            // App 컴포넌트 초기 세팅 함수
+            this.state = {items : ['아이템1']};
+        }
+        template(){
+            // APP컴포넌트의 html을 생성해서 반환
+            const { items } = this.state;
+            return`
+                <ul>
+                    ${items.map((item)=>`<li>${item}</li>`)}
+                </ul>
+                <button>추가</button>
+            `
+        }
+        setEvent(){
+            // App컴포넌트의 이벤트 등록
+            
+            this.target.querySelector("button").addEventListener("click",()=>{
+            const {items} = this.state;
+            this.setState({items :[...items, `아이템 ${items.length +1}`]});
+            })
+        }
+    }
+    // root는 선택자로 잡고
+    const root = new VirtualDOM(App,document.querySelector('#root'))
+    root.render()
+   
+</script>
+</html>
