@@ -30,3 +30,4 @@ console.log(str);
 // node로 파일을 실행할때
 // node 구문 뒤에 파일의 경로를 작성해 주면 된다.
 // node index.js
+// hello it's me 

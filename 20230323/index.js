@@ -9,7 +9,7 @@ function createdCookie(name, value){
     date.setTime(date.getTime()+10000);
     document.cookie = name+"="+value+';expires='+date.toUTCString() +";path=/";
 }
-//createdCookie("팝업",true);
+// createdCookie("팝업",true);
 
 //세션
 // 사용자가 브라우저를 이용하는데 하나의 상태를 관리할 때

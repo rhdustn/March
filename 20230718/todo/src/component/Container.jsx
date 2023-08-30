@@ -80,11 +80,7 @@ const Work = () => {
     <>
       {editing ? (
         <>
-          <input
-            type="text"
-            value={newWork}
-            onChange={(e) => setNewWork(e.target.value)}
-          />
+          <input type="text"value={newWork}onChange={(e) => setNewWork(e.target.value)}/>
           <button onClick={handleSaveClick}>Save</button>
           <button onClick={handleCancelClick}>Cancel</button>
         </>

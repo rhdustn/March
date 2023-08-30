@@ -186,3 +186,8 @@ app.post('/login',async(req,res)=>{
 app.listen(8080,()=>{
     console.log("server on")
 })
+
+for (let i = 0; i <=n; i++) {
+    
+    answer = (2*i)+1
+}
