@@ -10,7 +10,7 @@ export class Lottofour implements Authenticator {
             Numarr.push(i);
         }
         let LottoShow: number[] = [];
-        // 3. 6개의 무작위 번호 선택
+        //4개의 무작위 번호 선택
         for (let i = 0; i < 4; i++) {
             let indexRandom = Math.floor(Math.random() * Numarr.length);
             let number = Numarr[indexRandom];
