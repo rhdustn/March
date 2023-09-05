@@ -6,6 +6,7 @@
 // 1단계 코드를 실행하고 2단계 코드를 실행하고 절차적으로 테스트를 우리가 진행을 해볼 수 있다
 
 import { Block } from "@core/block/block";
+import Chain from "@core/chain/chain";
 import { GENESIS } from "@core/config";
 
 // describe : 테스트들의 그룹화 그룹을 지정할 수 있다
@@ -27,6 +28,8 @@ describe("block 테스트 코드 그룹",()=>{
 describe("block 검증",()=>{
     let newBlock : Block;
     let newBlock2 : Block
+    let newChain : Chain
+    let newChain2 : Chain
     // let newBlock3 : Block
     // it 테스트 할 코드의 최소 단위
     it("블록 추가",()=>{
@@ -52,5 +55,28 @@ describe("block 검증",()=>{
             return expect(true).toBe(false)
         }
         expect(isValidNewBlock.isError).toBe(false)
+    })
+    it("블록 체인 추가",()=>{
+        newChain = new Chain();
+        newChain.addToChain(newBlock)
+        console.log("ㅎㅎㅎㅎ",newChain.get)
+        // hash
+        console.log("88888",newChain.getBlockByHash(newBlock.hash))
+    })
+    it("네트워크 체인비교(롱기스트 체인 룰)",()=>{
+        newChain2 = new Chain()
+        newChain2.replaceChain(newChain.get());
+        console.log(newChain2.get())
+    })
+    it("이전 10번째 블록 or 최초의 블록",()=>{
+        // 현재 블록을 생성한다 가정하고
+        // 현재 블록이 생성된 시간이 이전 10번째 블록으로부터 얼마나 걸렸는지
+        // 확인을 하고 블록의 정해진 주기보다 빠르면 나이도를 ㄴ올리고 아니면 내인다
+        for (let i = 0; i < 20; i++) {
+           let block = new Block(GENESIS,["block"])
+           newChain.addToChain(block)
+            
+        }
+        console.log(newChain.getAdjustmentBlock())
     })
 })
