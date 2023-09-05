@@ -88,8 +88,8 @@ export class Block extends BlockHeader implements IBlock{
         const value : string =`${version}${timestamp}${height}${merkleRoot}${previoushash}${difficulty}${nonce}`
         return SHA256(value).toString();
 
-        // 머클루트 구하는 함수
     }
+    // 머클루트 구하는 함수
     // 제너릭 타입으로 준 이유는 뒤에 어떤 타입을 쓸지 모르니 유동적으로 움직일 수 있게 정함
     // <T> 부분은 함수가 어떤 유형의 데이터도 다룰 수 있도록 매개변수를 일반화하는 데 사용
     static getMerckleRoot<T>(_data:T[]) : string{

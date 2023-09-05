@@ -59,7 +59,7 @@ describe("block 검증",()=>{
     it("블록 체인 추가",()=>{
         newChain = new Chain();
         newChain.addToChain(newBlock)
-        console.log("ㅎㅎㅎㅎ",newChain.get)
+        console.log("ㅎㅎㅎㅎ",newChain.get())
         // hash
         console.log("88888",newChain.getBlockByHash(newBlock.hash))
     })
