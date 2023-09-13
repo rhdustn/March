@@ -1,4 +1,4 @@
-import { LottoNumber } from "../interface/lottoInterface";
+
 import Strategy from "../strategy/strategy";
 import { AuthenticationResponse } from "../strategy/Authenticator";
 

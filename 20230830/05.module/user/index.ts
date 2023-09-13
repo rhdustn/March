@@ -24,7 +24,7 @@ const userService = new UserService(strategy)
 
 const userController = new UserController(userService)
 
-userController.signin("google")
+userController.signin("kakao")
 
 // 1. userController.signin 매개변수 "google" 값 전달
 // 2. userService.login 함수 실행 매개변수로 "google" , 유저의 입력값

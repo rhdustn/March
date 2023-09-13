@@ -1,5 +1,3 @@
-import { LottoNumber } from "../interface/lottoInterface";
-
 export interface AuthenticationResponse{
     success : boolean
     result : Array<number>

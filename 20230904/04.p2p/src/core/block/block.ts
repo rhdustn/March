@@ -4,7 +4,8 @@ import BlockHeader from "./blockHeader"
 import { IBlock } from "@core/interface/block.interface";
 import { Failable } from "@core/interface/failable.interface";
 import CryptoMoudle from "@core/crypto/crypto.moudle";
-
+const BLOCK_GENRATION_INTERVAL =10 * 60;
+const DIFFICULTY_ADJUSTMENT_INTERVAL =10;
 // block 형태를 클래스로 정의
 export class Block extends BlockHeader implements IBlock{
     hash: string;
@@ -12,23 +13,24 @@ export class Block extends BlockHeader implements IBlock{
     nonce: number;
     difficulty: number;
     data: string[];
-    constructor(_previousBlock : Block, _data : string[]){
+    constructor(_previousBlock : Block, _data : string[] ,_adjustmentBlock :Block){
         // 부모 클래스 생성자 호출 super
         super(_previousBlock);
         this.merkleRoot = Block.getMerckleRoot(_data);
         // 블록 본인의 데이터를 해시화 한게 블록의 해시값
         this.hash = Block.createBlockHash(this);
-        // 블록 체굴은 뒤에 추가
         // 지금은 0으로
         this.nonce = 0;
         // 난이도 3
-        this.difficulty =3;
+        // this.difficulty =3;
+        this.difficulty =Block.getDifficulty(this,_adjustmentBlock, _previousBlock);
+
         this.data = _data
     }
 
     // 블록 추가
-    static generateBlock(_previousBlock:Block,_data:string[]) :Block{
-        const generateBlock = new Block(_previousBlock,_data)
+    static generateBlock(_previousBlock:Block,_data:string[] ,_adjustmentBlock :Block) :Block{
+        const generateBlock = new Block(_previousBlock,_data ,_adjustmentBlock)
         // 마이닝을 통해서 블록의 생성 권한을 받은 블록을 만들고
         const newBlock = Block.findBlock(generateBlock);
         return newBlock;
@@ -114,5 +116,29 @@ export class Block extends BlockHeader implements IBlock{
         // 블록이 유효성 검사를 통과 전상적인 블록이다
         return {isError : false, value : _newBlock}
     }
+    static getDifficulty(_newBlock : Block, _adjustmentBlock:Block, _previousBlock : Block) : number{
+        //네트워크 에서는  2016개 이정 블록의 생성시잔을 보고 난이도 조절
+        // 우리는 10개 이전
+        if(_newBlock.height <=0) throw new Error("높이가 0이 들어옴")
+        if(_newBlock.height <10) return 0
+        if(_newBlock.height <21) return 1
+        // 블록의 높이가 20 이하일 경우에는 체크 x
+        // 블록의 높이가 10의 배수가 아닐 경우에를 이전 블록 난이도 설정
+        // 목표시간은 1블록당 10분
+        // 10개를 만드려면 100분
+        // 나머지가 떨어지지 않으면
+        if(_newBlock.height % DIFFICULTY_ADJUSTMENT_INTERVAL !==0)return _previousBlock.difficulty
+        const timeToken : number = _newBlock.timestamp -_adjustmentBlock.timestamp;
+        const TimeExpected : number = BLOCK_GENRATION_INTERVAL * 10 * DIFFICULTY_ADJUSTMENT_INTERVAL*2;
+        // 난이도 증가
+        // 생성시간이 빨랐다 총 걸린시간 < 목표시간/2 = 이전블록 난이도+1
+        if(timeToken <TimeExpected /2 )return _adjustmentBlock.difficulty+1;
+        // 난이도 감소
+        // 생성시간이 더 걸렸다 총 걸린 시간 > 목표시간 *2 = 이전블록 난이도-1
+        if(timeToken >TimeExpected *2) return _previousBlock.difficulty-1
+        return _previousBlock.difficulty
+    }
     
 }
+export default Block
+

@@ -1,4 +1,4 @@
-import { LottoNumber } from "../interface/lottoInterface";
+
 import {AuthenticationResponse, Authenticator} from "./Authenticator"
 
 interface IStrategy{

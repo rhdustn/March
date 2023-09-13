@@ -1,4 +1,3 @@
-import { LottoNumber } from "../interface/lottoInterface";
 import { Authenticator, AuthenticationResponse } from "./Authenticator";
 
 export class Lottofour implements Authenticator {
