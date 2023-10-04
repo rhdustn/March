@@ -11,7 +11,7 @@ const data = ["A","B","C","D","E"];
 
 const merkleTree = merkle("sha256").sync(data);
 const Root = merkleTree.root();
-console.log(Root)
+console.log("루트임",Root)
 
 // A를 해시화 B 해시화 둘다 더해서 AB
 // C+D CD

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    // RPC 통신을 하는 이유는 편하게 사용할 수 있게 도와주는 web3 라이브러리
+    // 이더리움 제단에서 지원한다
+    const web3 = new Web3("http://127.0.0.1:8545")
+
+    web3.eth.getBalance("0xd5aFD4BaB28e03556667cCD83dc8eb2C6a40d900").then((data)=>{
+        console.log(data)
+        const value = web3.utils.fromWei(data);
+        console.log(value);
+    })
+
+    // web3.eth.sendTransaction({
+    //     from : "0x7524906b833B3Fa172d0de28B203Cb0bC56252A7",
+    //     to :"0x6556ff9bd341f1F6167E7565955122d22Ef0F473",
+    //     // 10eth => wei 단위로 변화
+    //     value :web3.utils.toWei("10","ether"),
+    // }).then(console.log)
+
+    // CA를 생성
+    // 솔리디티로 작성한 코드를 스마트 컨드랙트 배포
+    web3.eth.sendTransaction({
+        from :"0xd5aFD4BaB28e03556667cCD83dc8eb2C6a40d900",
+        gas :"3000000",
+        data:"60806040523480156100115760006000fd5b505b5b610019565b61016b806100286000396000f3fe60806040523480156100115760006000fd5b506004361061003b5760003560e01c80632096525514610041578063552410771461005f5761003b565b60006000fd5b61004961007b565b60405161005691906100f2565b60405180910390f35b610079600480360381019061007491906100b7565b61008d565b005b6000600060005054905061008a565b90565b8060006000508190909055505b5056610134565b6000813590506100b081610119565b5b92915050565b6000602082840312156100ca5760006000fd5b60006100d8848285016100a1565b9150505b92915050565b6100eb8161010e565b82525b5050565b600060208201905061010760008301846100e2565b5b92915050565b60008190505b919050565b6101228161010e565b811415156101305760006000fd5b5b50565bfea26469706673582212206d15b7db1fcc7d432a54ba77213dfb5ba59aeb8a1eada5f208546e8f0f2de51964736f6c63430008000033"
+    }).then(console.log)
+
+    // contractAddress :'0x1fa8a0803b251dbe3d8db9a103e0707d3556d1329c77ae48633d6c00d9b6c3e9
+    // CA 매핑 되어있는 코드가 활성화 되고 컨트랙트 코드가 샐행된다
+
+    // call과 send
+    // 트랜잭션을 발생시킬때는 send
+    // 조회를 할때는 call로 값을 조회 
+</script>
+</html>

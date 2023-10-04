@@ -1,7 +1,9 @@
 class CryptoMoudle{
     static hashToBinary(hash : string) : string{
         let binary : string ="";
+
         // 16진수를 2진수로 바꾸는 식
+
         // 해시 문자열을 2글자씩 가지고 와서 반복
         for (let i = 0; i < hash.length; i+=2) {
             const hexByte = hash.substr(i,2)
@@ -14,6 +16,7 @@ class CryptoMoudle{
 
             // 현재의 2진 바이트를 최종 이진 문자열에 추가
             binary +=binaryByte
+            
         }
 
         return binary

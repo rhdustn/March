@@ -70,5 +70,8 @@ const block = new Block(header, data);
 console.log(block)
 
 const header2 = new Header(1,block.hash)
+const header3 = new Header(2,block.hash)
 const block2 = new Block(header2,["두번째 블록 데이터"])
+const block3 = new Block(header3,["세번째 블록 데이터"])
 console.log(block2)
+console.log(block3)
