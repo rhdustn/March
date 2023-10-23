@@ -28,7 +28,7 @@ const App =()=>{
       setCount(result)
     })
   }
-  // 값을 블록체인 네트워크에 요청해서 상태변수를 변겨하는 함수
+  // 값을 블록체인 네트워크에 요청해서 상태변수를 변경하는 함수
   const increment =async()=>{
     const incrementData = abi.find((data)=> data.name ==="increment");
     const data = web3.eth.abi.encodeFunctionCall(incrementData,[]);
